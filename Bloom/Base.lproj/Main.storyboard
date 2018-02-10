@@ -6,9 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -18,16 +24,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JM5-tn-0iY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JM5-tn-0iY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="392"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JM5-tn-0iY" secondAttribute="height" multiplier="375:392" id="quY-6g-Aqo"/>
+                                </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cig-tI-BLI">
+                                <rect key="frame" x="0.0" y="464" width="375" height="203"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cig-tI-BLI" secondAttribute="height" multiplier="375:203" id="LdY-5t-JbL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JM5-tn-0iY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="E7M-pa-G21"/>
-                            <constraint firstItem="JM5-tn-0iY" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HfU-xU-ojs"/>
-                            <constraint firstItem="JM5-tn-0iY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cXx-T9-Xwe"/>
-                            <constraint firstItem="JM5-tn-0iY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fqi-mZ-Eh8"/>
+                            <constraint firstItem="JM5-tn-0iY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="66A-NV-UOp"/>
+                            <constraint firstItem="JM5-tn-0iY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PeP-5u-IC7"/>
+                            <constraint firstItem="cig-tI-BLI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="c6V-YO-grA"/>
+                            <constraint firstItem="JM5-tn-0iY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hWr-ej-abd"/>
+                            <constraint firstItem="cig-tI-BLI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jyr-6y-3Uo"/>
+                            <constraint firstItem="JM5-tn-0iY" firstAttribute="leading" secondItem="cig-tI-BLI" secondAttribute="leading" id="k06-lq-nrE"/>
+                            <constraint firstItem="cig-tI-BLI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xKM-Ak-ZEr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,6 +60,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionText" destination="cig-tI-BLI" id="AWw-fs-Rfp"/>
                         <outlet property="photoTaken" destination="JM5-tn-0iY" id="XVp-Eh-L9H"/>
                     </connections>
                 </viewController>

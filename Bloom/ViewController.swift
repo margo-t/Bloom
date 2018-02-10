@@ -9,10 +9,16 @@
 import UIKit
 import CoreML
 import Vision
+import Alamofire
+import SwiftyJSON
+import SDWebImage
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    let wikipediaURl = "https://en.wikipedia.org/w/api.php"
     let imagePicker = UIImagePickerController()
+
+    @IBOutlet weak var descriptionText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +39,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let userPickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            photoTaken.image = userPickedImage
+            //photoTaken.image = userPickedImage
             
             guard let ciimage = CIImage(image: userPickedImage) else {
                 fatalError("Could not convert to CIImage")
@@ -58,6 +64,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print(result)
             if let firstResult = result.first {
                     self.navigationItem.title = firstResult.identifier
+                
+                self.requestInfo(flowerName: firstResult.identifier)
+                
                 }
             }
             //print(result.first?.identifier)
@@ -70,6 +79,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         catch {
             print (error)
+        }
+    }
+    
+    func requestInfo(flowerName: String) {
+        
+        let parameters : [String:String] = [
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts|pageimages",
+            "exintro" : "",
+            "explaintext" : "",
+            "titles" : flowerName,
+            "indexpageids" : "",
+            "redirects" : "1",
+            "pithumbsize" : "500"
+            ]
+
+        
+        Alamofire.request(wikipediaURl, method: .get, parameters: parameters).responseJSON
+            { (response) in
+                if response.result.isSuccess {
+                    print("Got Wikipedia response")
+                    //print(response)
+                    
+                    let flowerJSON: JSON = JSON(response.result.value!)
+                    let pageID = flowerJSON["query"]["pageids"][0].stringValue
+                    print(pageID)
+                    let flowerDescription = flowerJSON["query"]["pages"][pageID]["extract"].stringValue
+
+                    let flowerImageURL = flowerJSON["query"]["pages"][pageID]["thumbnail"]["source"].stringValue
+                    
+                    print(flowerDescription)
+                    
+                    self.photoTaken.sd_setImage(with: URL(string: flowerImageURL))
+                    self.descriptionText.text = flowerDescription
+                    
+                }
         }
     }
 
