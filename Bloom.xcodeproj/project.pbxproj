@@ -12,6 +12,7 @@
 		8D8ACF03202E82A4006CBBEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8ACF01202E82A4006CBBEB /* Main.storyboard */; };
 		8D8ACF05202E82A4006CBBEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D8ACF04202E82A4006CBBEB /* Assets.xcassets */; };
 		8D8ACF08202E82A4006CBBEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8ACF06202E82A4006CBBEB /* LaunchScreen.storyboard */; };
+		8D8ACF10202E916C006CBBEB /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8D8ACF0F202E916C006CBBEB /* FlowerClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8D8ACF04202E82A4006CBBEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D8ACF07202E82A4006CBBEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D8ACF09202E82A4006CBBEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D8ACF0F202E916C006CBBEB /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				8D8ACF01202E82A4006CBBEB /* Main.storyboard */,
 				8D8ACF04202E82A4006CBBEB /* Assets.xcassets */,
 				8D8ACF06202E82A4006CBBEB /* LaunchScreen.storyboard */,
+				8D8ACF0F202E916C006CBBEB /* FlowerClassifier.mlmodel */,
 				8D8ACF09202E82A4006CBBEB /* Info.plist */,
 			);
 			path = Bloom;
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8ACF10202E916C006CBBEB /* FlowerClassifier.mlmodel in Sources */,
 				8D8ACF00202E82A4006CBBEB /* ViewController.swift in Sources */,
 				8D8ACEFE202E82A4006CBBEB /* AppDelegate.swift in Sources */,
 			);
